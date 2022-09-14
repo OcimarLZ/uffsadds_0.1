@@ -1,0 +1,42 @@
+Installations
+
+1. pip install flask
+2. pip install wtforms
+3. pip install email_validator
+4. pip install flask-sqlalchemy
+5. pip install Pillow
+6. pip install flask-pcrypt
+7. pip install flask_login
+
+
+from main import database
+from models import Usuario, Post
+database.create_all()
+usuario = Usuario(username='admin', email='seti.depro@uffs.edu.br', senha='admin')
+usuario1 = Usuario(username='ocimar.zolin', email='ocimar.zolin@uffs.edu.br', senha='olz4444')
+database.session.add(usuario)
+database.session.add(usuario1)
+database.session.commit()
+
+post1 = Post(titulo='Post de criação inicial do banco', corpo='A asj dkla jdklaj dlaasdadada', id_usuario=2)
+database.session.add(post1)
+database.session.commit()
+
+# configurar o git
+git config --global user.email "ocimar.zolin@gmail.com"
+git config --global user.email "Ocimar Luis Zolin"
+
+# login heroku
+heroku login
+
+git init
+
+heroku git:remote -a uffsaddons
+
+
+
+
+
+
+
+

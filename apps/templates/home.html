@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+        <div class="container mt-3">
+            <h3 style="color: orange">Aplicações complementares aos Sistemas da UFFS</h3>
+            <h5>Últimas notícias vinculadas às soluções disponíveis no Sistema UFFS AddOns</h5>
+            <hr>
+            <!-- Loop para mostrar todos os posts ativos no portal -->
+            {% for post in posts %}
+            <div class="row border mt-4 p-3 meupost">
+                <div class="col col-3">
+                    <!-- formata e mostra a imagem do proprietário do POST -->
+                    <div class="image pe-2"> <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}" class="rounded" width="200"> </div>
+                    <!-- mostra o home do usuário do proprietário do post -->
+                    <strong>{{ post.autor.username }}</strong>
+                </div>
+                <!-- Mostra o título e o conteúdo (corpo) do post -->
+                <div class="col col-9">
+                    <a style="text-decoration: none" href="{{ url_for('exibir_post', post_id=post.id) }}"><h5>{{ post.titulo }}</h5></a>
+                    <p>{{ post.corpo }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}

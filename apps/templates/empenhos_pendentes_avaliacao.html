@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container mt-3" xmlns="http://www.w3.org/1999/html">
+    <h6>Relação de SOLICITAÇÕES DE EMPENHO pendentes de avaliação pelo gestor de empenhos</h6>
+    <!-- Botões para executar as operações da aplicação -->
+    <div>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" href="{{ url_for('editar_perfil') }}" autocomplete="off">Incluir manualmente</button>
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="button" href="{{ url_for('editar_perfil') }}" autocomplete="off" aria-pressed="true">Incluir via SIPAC</button>
+        <button type="button" class="btn btn-outline-dark" data-bs-toggle="button" href="{{ url_for('editar_perfil') }}" autocomplete="off" aria-pressed="true">Rever SE excluídos</button>
+    </div>
+    <!-- Loop para mostrar todos as solicitações de empenhos a avaliar -->
+    <div class="mt-1 p-0 size=listaempenhos">
+        <fonte size="1" face="Verdana">
+        <table class="table table-striped table-sm table-responsive">
+            <tr>
+                <th>Seq</th>
+                <th>St</th>
+                <th>Tipo</th>
+                <th>Req/SE</th>
+                <th>Ano</th>
+                <th>Processo de Empenho</th>
+                <th>Licitacao/Contrato</th>
+                <th>Credor</th>
+                <th>UG</th>
+                <th>Dotação</th>
+                <th>UGR</th>
+                <th>CCusto</th>
+                <th>Mod</th>
+                <th>Valor</th>
+                <th>Operações</th>
+            </tr>
+            {% for sol_empenho in lista_empenhos %}
+            <!-- mostra a lista de empenhos pendestes de avaliação-->
+            <tr>
+                <td>{{ sol_empenho.id }}</td>
+                <td>{{ sol_empenho.status }}</td>
+                <td>{{ sol_empenho.tipo }}</td>
+                <td>{{ sol_empenho.numero }}</td>
+                <td>{{ sol_empenho.ano }}</td>
+                <td>{{ sol_empenho.processo }}</td>
+                <td>{{ sol_empenho.modal_licitacao, sol_empenho.licitacao }}</td>
+                <td>{{ sol_empenho.credor_cnpj, sol_empenho.credor_nome }}</td>
+                <td>{{ sol_empenho.ug }}</td>
+                <td>{{ sol_empenho.dotacao }}</td>
+                <td>{{ sol_empenho.ugr }}</td>
+                <td>{{ sol_empenho.ccusto }}</td>
+                <td>{{ sol_empenho.modal_empenho }}</td>
+                <td>{{ sol_empenho.valor_estimado }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-danger">Del</button>
+                        <a href="{{ url_for('editar_sol_empenho', sol_empenho_id=sol_empenho.id) }}/"><button type="button" class="btn btn-warning">Alt</button></a>
+                        <button type="button" class="btn btn-success">Inc</button>
+                    </div>
+                </td>
+            </tr>
+            </fonte>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

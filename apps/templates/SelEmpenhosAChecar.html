@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+   <div class="container">
+        <h2>Solicita&ccedil;&otilde;es de empenhos pendentes de valida&ccedil;&atilde;o</h2>
+
+        <table border="1" cellpadding="1" cellspacing="0" style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">Origem</th>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Processo</th>
+                    <th scope="col">Edital</th>
+                    <th scope="col">Objeto</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">UG/UGR</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Ver</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><input name="Editar" type="submit" value="Editar" /></td>
+                    <td><input name="Visualizar" type="submit" value="Ver" /></td>
+                </tr>
+            </tbody>
+        </table>
+       <p><input name="Novo" type="button" value="Nova Solicitação" /></p>
+   </div>
+
+{% endblock %}

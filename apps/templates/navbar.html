@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid container">
+    <a class="navbar-brand" href="{{ url_for('home') }}">UFFS AddOns</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!--  Menu das funções de materiais -->
+        <li class="nav-item Materiais">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMat" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Materiais
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMat">
+            <li><a class="dropdown-item" href="#">Consultar Catálogo</a></li>
+            <li><a class="dropdown-item" href="#">Consultar Cotação</a></li>
+            <li><a class="dropdown-item" href="#">Cadastrar Fornecedor</a></li>
+            <li><a class="dropdown-item" href="#">Realizar Cotação</a></li>
+            <li><a class="dropdown-item" href="#">Consultar Localização</a></li>
+            <li><a class="dropdown-item" href="#">Emitir Etiqueta</a></li>
+            <li><a class="dropdown-item" href="#">Consultar Ata de Preços</a></li>
+            <li><a class="dropdown-item" href="#">Consultar Requisição</a></li>
+          </ul>
+        </li>
+        <!--  Menu das funções de orçamento -->
+        <li class="nav-item Orçamento">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOrc" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Orçamento
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownOrc">
+            <li><a class="dropdown-item" href="#">Orçamento Geral da UFFS</a></li>
+            <li><a class="dropdown-item" href="#">Orçamento da UGR</a></li>
+            <li><a class="dropdown-item" href="#">Extrato da UGR</a></li>
+          </ul>
+        </li>
+        <!--  Menu das funções de compras e licitações -->
+        <li class="nav-item Aquisições">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCL" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Aquisições
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownCL">
+            <li><a class="dropdown-item" href="#">Mapa de Requisições</a></li>
+            <li><a class="dropdown-item" href="#">Cadastrar LC no ComprasNet</a></li>
+            <li><a class="dropdown-item" href="#">Recuperar LC do ComprasNet</a></li>
+          </ul>
+        </li>
+        <!--  Menu das funções de empenho -->
+        <li class="nav-item Empenhos">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEmp" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Empenhos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownEmp">
+            <li><a class="dropdown-item" href="{{ url_for('empenhos_pendentes_avaliacao') }}">Pendentes de avaliação</a></li>
+            <li><a class="dropdown-item" href="#">Prontos para SIAFI</a></li>
+            <li><a class="dropdown-item" href="#">Pendentes de numeração</a></li>
+            <li><a class="dropdown-item" href="#">Pendentes de PDF</a></li>
+            <li><a class="dropdown-item" href="#">Pendentes de instrução no MV</a></li>
+            <li><a class="dropdown-item" href="#">Pendentes de detalhamento no SIPAC</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Consulta Geral de Empenhos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item Administração">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdm" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administração
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdm">
+            <li><a class="dropdown-item" href="{{ url_for('criar_post') }}">Criar Post</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('usuarios') }}">Usuários</a></li>
+            <li><a class="dropdown-item" href="#">Demandas</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('contato') }}">Contato</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="d-flex navbar-nav">
+        {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('perfil') }}">Meu Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('sair') }}">Sair</a>
+            </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Criar Conta</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
